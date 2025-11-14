@@ -12,7 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Flight {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "flight_id")
@@ -28,4 +27,16 @@ public class Flight {
     @JsonManagedReference(value = "flight-booking")
     @ToString.Exclude
     private List<Booking> bookings;
+
+    public Flight(long l, String airline, int i) {
+        this.flightId = l;
+        this.airline = airline;
+        this.totalSeats = i;
+    }
+
+    public Flight(String airline, int i) {
+        this.flightId = null;
+        this.airline = airline;
+        this.totalSeats = i;
+    }
 }
