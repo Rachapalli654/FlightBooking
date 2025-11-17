@@ -37,7 +37,6 @@ class BookingControllerTest {
 
     @Test
     void testBookFlight() throws Exception {
-        // Prepare request and mock behavior
         BookingRequest req = new BookingRequest();
         req.setCustomerId(1L);
         req.setFlightId(1L);
@@ -46,7 +45,6 @@ class BookingControllerTest {
         Mockito.when(bookingService.bookFlight(1L, 1L, BigDecimal.valueOf(5000)))
                 .thenReturn(new Booking());
 
-        // Perform request using MockMvc
         mockMvc.perform(post("/api/bookings/book")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"flightId\":1,\"customerId\":1,\"price\":5000}"))
